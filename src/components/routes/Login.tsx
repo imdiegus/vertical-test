@@ -49,8 +49,8 @@ export default function Login({ }: Props) {
             console.log('res')
             if (res.data.success) {
                 dispatch(setUser(res.data.data))
-                localStorage.setItem(string.locaStorageToken, res.data.data)
-                router('/email')
+                localStorage.setItem(string.locaStorageToken, res.data.data.token)
+                router('/email/inbox')
             } else {
                 console.log(res.data)
             }

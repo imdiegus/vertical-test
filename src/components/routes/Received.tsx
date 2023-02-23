@@ -3,6 +3,8 @@ import axiosClient from '../../config/axiosClient'
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks'
 import { setEmails } from '../../slices/userSlice'
 import Layout from '../commonComponents/Layout'
+import EmailList from '../emails/EmailList'
+import EmailScreen from '../emails/EmailScreen'
 
 type Props = {}
 
@@ -10,9 +12,9 @@ export default function Received({ }: Props) {
     const user = useAppSelector(state => state.user.user)
 
     const dispatch = useAppDispatch()
-    console.log(user.email)
 
     useEffect(() => {
+
         const getEmails = async () => {
             try {
                 const res = await axiosClient.get(`/email/${user.email}`)
@@ -22,15 +24,16 @@ export default function Received({ }: Props) {
                 console.log(error)
             }
         }
-        getEmails()
-    }, [])
+        if (user.email) {
+            getEmails()
+        }
+    }, [user])
     return (
         <Layout>
-            <div>
-                <div>
-                </div>
-                <div>
-                </div></div>
+            <EmailScreen
+                type='inbox'
+            />
+
         </Layout>
     )
 }

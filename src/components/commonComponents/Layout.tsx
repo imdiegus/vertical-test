@@ -1,4 +1,4 @@
-import React, { ReactNode, useMemo } from 'react'
+import React, { ReactNode, useEffect, useMemo } from 'react'
 import string from '../../constants/strings'
 import Sidebar from './Sidebar'
 
@@ -10,6 +10,7 @@ export default function Layout({ children }: Props) {
     const isLoggedin = useMemo(() => {
         return localStorage.getItem(string.locaStorageToken)
     }, [])
+
     return (
         <div className={`${isLoggedin ? 'mainLayout ' : ''}`}><Sidebar />{children}</div>
     )

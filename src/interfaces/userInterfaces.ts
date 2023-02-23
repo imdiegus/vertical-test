@@ -4,6 +4,11 @@ export interface userInterface {
   lastName: string
 }
 
+export interface emailResponse extends emailInterface {
+  fromData: userInterface[]
+  toData: userInterface[]
+}
+
 export interface emailInterface {
   to: string[]
   message: string
@@ -14,5 +19,8 @@ export interface emailInterface {
 
 export interface userSliceInterface {
   user: userInterface
-  emails: emailInterface[]
+  emails: emailResponse[]
+  selectedEmail: emailResponse | null
 }
+
+export type emailScreenType = 'inbox' | 'sent'

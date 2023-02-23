@@ -7,7 +7,8 @@ import Redirect from './components/routes/Redirect';
 import Sent from './components/routes/Sent';
 import axiosClient from './config/axiosClient';
 import string from './constants/strings';
-import { useAppSelector } from './hooks/reduxHooks';
+import { useAppDispatch, useAppSelector } from './hooks/reduxHooks';
+import { setUser } from './slices/userSlice';
 
 type Props = {}
 
@@ -20,14 +21,8 @@ export default function App({ }: Props) {
             path: '/',
             element: <Redirect />
         },
-        {
-            path: '/email',
-            element: <Received />,
-            children: [
-                { path: '/email/sent', element: <Sent /> },
-                { path: '/email/inbox', element: <Received /> },
-            ]
-        },
+        { path: '/email/sent', element: <Sent /> },
+        { path: '/email/inbox', element: <Received /> },
         {
             path: '/login',
             element: <Login />,
@@ -37,14 +32,14 @@ export default function App({ }: Props) {
             element: <Login />,
         },
     ]);
+    const dispatch = useAppDispatch()
 
     useEffect(() => {
         const getUserData = async () => {
-
             const token = localStorage.getItem(string.locaStorageToken)
-            if (!user && token) {
+            if (!user.email && token) {
                 const res = await axiosClient.get('/users/userData')
-                console.log(res)
+                dispatch(setUser(res.data.data))
             }
         }
         getUserData()

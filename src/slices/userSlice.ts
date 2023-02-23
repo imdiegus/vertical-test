@@ -1,5 +1,6 @@
 import {
   emailInterface,
+  emailResponse,
   userInterface,
   userSliceInterface,
 } from './../interfaces/userInterfaces'
@@ -13,6 +14,7 @@ const initialState: userSliceInterface = {
     lastName: '',
   },
   emails: [],
+  selectedEmail: null,
 }
 
 export const userSlice = createSlice({
@@ -27,12 +29,18 @@ export const userSlice = createSlice({
     },
     setEmails: (
       state: userSliceInterface,
-      action: PayloadAction<emailInterface[]>,
+      action: PayloadAction<emailResponse[]>,
     ) => {
       state.emails = action.payload
+    },
+    setSelectedEmail: (
+      state: userSliceInterface,
+      action: PayloadAction<emailResponse>,
+    ) => {
+      state.selectedEmail = action.payload
     },
   },
 })
 
-export const { setUser, setEmails } = userSlice.actions
+export const { setUser, setEmails, setSelectedEmail } = userSlice.actions
 export default userSlice.reducer

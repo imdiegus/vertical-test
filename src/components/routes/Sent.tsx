@@ -1,13 +1,15 @@
 import React from 'react'
 import Layout from '../commonComponents/Layout'
+import EmailScreen from '../emails/EmailScreen'
 
 type Props = {}
 
 export default function Sent({ }: Props) {
     return (
         <Layout>
-
-            <div>Sent</div>
+            <EmailScreen
+                type='sent'
+            />
         </Layout>
     )
 }
