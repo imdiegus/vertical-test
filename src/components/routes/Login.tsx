@@ -42,11 +42,10 @@ export default function Login({ }: Props) {
 
     const handleLogin = async () => {
         try {
-            const res = await axiosClient.post('/users/login', {
+            const res = await axiosClient().post('/users/login', {
                 email: formik.values.email,
                 password: formik.values.password
             })
-            console.log('res')
             if (res.data.success) {
                 dispatch(setUser(res.data.data))
                 localStorage.setItem(string.locaStorageToken, res.data.data.token)

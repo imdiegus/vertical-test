@@ -38,7 +38,7 @@ export default function App({ }: Props) {
         const getUserData = async () => {
             const token = localStorage.getItem(string.locaStorageToken)
             if (!user.email && token) {
-                const res = await axiosClient.get('/users/userData')
+                const res = await axiosClient().get('/users/userData')
                 dispatch(setUser(res.data.data))
             }
         }

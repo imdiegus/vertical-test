@@ -12,6 +12,9 @@ export default function EmailList({ type }: Props) {
     const user = useAppSelector(state => state.user.user)
 
     const filteredEmails = useMemo(() => {
+        if (!emails) {
+            return []
+        }
         switch (type) {
             case 'inbox':
                 return emails.filter(item => item.to.includes(user.email))

@@ -17,8 +17,7 @@ export default function Received({ }: Props) {
 
         const getEmails = async () => {
             try {
-                const res = await axiosClient.get(`/email/${user.email}`)
-                console.log(res)
+                const res = await axiosClient().get(`/email/${user.email}`)
                 dispatch(setEmails(res.data.data))
             } catch (error) {
                 console.log(error)

@@ -17,10 +17,5 @@ export const sidebarOptions: sidebarItem[] = [
         icon: <BiUser />,
         path: '/email/sent',
     },
-    {
-        title: 'logout',
-        icon: <BiUser />,
-        path: '',
-    }
 
 ]
