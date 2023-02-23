@@ -18,6 +18,7 @@ export default function Input({ name, formik, type }: Props) {
         value={formik.values[nameKey]}
         name={name}
         type={type}
+        id={name}
       />
       {/* {(formik.touched[nameKey] && formik.error[nameKey]) && <p>{formik.error[nameKey]}</p>} */}
     </div>

@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "e2eTest": "cypress run -- --record -- spec cypress/e2e/LoginAndSendEmail.cy.ts "
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
@@ -30,7 +31,9 @@
     "yup": "^1.0.0"
   },
   "devDependencies": {
+    "@types/jest": "^29.4.0",
     "@types/luxon": "^3.2.0",
+    "@types/mocha": "^10.0.1",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@vitejs/plugin-react-swc": "^3.0.0",
